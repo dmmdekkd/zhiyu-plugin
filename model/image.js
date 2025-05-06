@@ -23,7 +23,7 @@ async function image(e, file, name, obj) {
   }
   let data = {
     quality: 100,
-    tplFile: `./plugins/jiandan-plugin/resources/html/${file}.html`,
+    tplFile: `./plugins/zhiyu-plugin/resources/html/${file}.html`,
     ...obj
   }
   let img = await puppeteer.screenshot(name, {
