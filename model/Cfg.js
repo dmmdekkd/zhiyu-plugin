@@ -6,13 +6,13 @@ const _path = process.cwd().replace(/\\/g, '/');
 
 class Cfg {
   constructor() {
-    this.file = `${_path}/plugins/jiandan-plugin/config`;
-    this.defile = `${_path}/plugins/jiandan-plugin/defSet`;
+    this.file = `${_path}/plugins/zhiyu-plugin/config`;
+    this.defile = `${_path}/plugins/zhiyu-plugin/defSet`;
   }
 
   /** 解析单个配置文件 */
   getconfig(file, name) {
-    let cfgyaml = `${_path}/plugins/jiandan-plugin/${file}/${name}.yaml`;
+    let cfgyaml = `${_path}/plugins/zhiyu-plugin/${file}/${name}.yaml`;
     const configData = fs.readFileSync(cfgyaml, 'utf8');
     return yaml.parse(configData);
   }
