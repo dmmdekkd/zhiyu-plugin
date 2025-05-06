@@ -5,7 +5,7 @@ import { Version } from "./components/index.js";
 let ret = [];
 
 const files = fs
-  .readdirSync("./plugins/jiandan-plugin/apps")
+  .readdirSync("./plugins/zhiyu-plugin/apps")
   .filter((file) => file.endsWith(".js"));
 
 files.forEach((file) => {
@@ -33,7 +33,7 @@ const currentTime = new Date().toLocaleString();
 logger.info(chalk.hex("#00FFFF")(`
   ╭───────────────────────────────╮
   │                               │
-  │  ${chalk.hex("#FFD700")("简单插件")} ${chalk.hex("#00FF00")(`v${Version.ver}`)} ${chalk.hex("#FF69B4")("载入成功 ^_^")}  │
+  │  ${chalk.hex("#FFD700")("知鱼插件")} ${chalk.hex("#00FF00")(`v${Version.ver}`)} ${chalk.hex("#FF69B4")("载入成功 ^_^")}  │
   │                               │
   │  ${chalk.hex("#FFA500")("作者 - 3448585471")}                │
   │  ${chalk.hex("#1E90FF")("github - github.com/dmmdekkd/jiandan-plugin")}        │
