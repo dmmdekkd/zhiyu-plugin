@@ -12,7 +12,7 @@
 
 ### 📜 帮助
 ```markdown
-- 发送`简单帮助`查看帮助菜单
+- 发送`帮助`查看帮助菜单
 ```
 
 
@@ -74,19 +74,19 @@
 #### 🌇 使用`Github`
 
 ```bash
-git clone --depth=1 https://github.com/dmmdekkd/jiandan-plugin.git ./plugins/zhiyu-plugin
+git clone --depth=1 https://github.com/dmmdekkd/zhiyu-plugin.git ./plugins/zhiyu-plugin
 ```
 
 > [!tip]
 > 如果您的网络环境较差，建议使用代理加速
 > ```bash
-> git clone --depth=1 https://ghfast.top/https://github.com/dmmdekkd/jiandan-plugin.git ./plugins/zhiyu-plugin
+> git clone --depth=1 https://ghfast.top/https://github.com/dmmdekkd/zhiyu-plugin.git ./plugins/zhiyu-plugin
 > ```
 
 #### 🎢 使用`gitee`镜像
 
 ```bash
-git clone --depth=1 https://gitee.com/qianzhi11_admin/jiandan-plugin.git ./plugins/zhiyu-plugin
+git clone --depth=1 https://gitee.com/qianzhi11_admin/zhiyu-plugin.git ./plugins/zhiyu-plugin
 ```
 
 ## 🌃 帮助图
