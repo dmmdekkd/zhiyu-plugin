@@ -1,0 +1,50 @@
+- group: "无需管理员/群主权限"
+  list:
+    - icon: 派蒙
+      title: "#戳一戳 @某人"
+      desc: "戳一下指定用户"
+    - icon: 派蒙
+      title: "#群信息"
+      desc: "查看群基本信息"
+    - icon: 派蒙
+      title: "#成员信息 @某人"
+      desc: "获取群里某人的基本信息"
+    - icon: 派蒙
+      title: "#群信息"
+      desc: "查看本群基本信息"     
+    - icon: 派蒙
+      title: "#获取成员列表"
+      desc: "获取本地全部成员列表"
+    - icon: 派蒙
+      title: "#群信息"
+      desc: "查看群基本信息"  
+      
+- group: "需要管理员/群主权限"
+  list:
+    - icon: 派蒙
+      title: "#开启/关闭全员禁言"
+      desc: "控制全员禁言开关"
+    - icon: 派蒙
+      title: "#禁言 @某人 时间"
+      desc: "#禁言某人 #禁言 @张三 5分钟"
+    - icon: 派蒙
+      title: "#解除禁言 @某人"
+      desc: "解除禁言"
+    - icon: 派蒙
+      title: "#踢人 @某人"
+      desc: "踢人了"     
+    - icon: 派蒙
+      title: "#设置群名 新名称"
+      desc: "设置群名"
+    - icon: 派蒙
+      title: "#设置名片 指定QQ号 新名称"
+      desc: "给某人设置一个群昵称 #设置名片 3448585471 你好"          
+- group: "仅限主人"
+  auth: "master"
+  list:    
+    - icon: 派蒙
+      title: "#设置管理员 QQ号"
+      desc: "设置管理员"
+    - icon: 派蒙
+      title: "#取消管理员 QQ号"
+      desc: "取消管理员"                     
