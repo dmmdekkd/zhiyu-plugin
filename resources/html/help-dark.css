@@ -1,0 +1,159 @@
+/* 隐藏滚动条 */
+body {
+  overflow: hidden;
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* === 确保页面背景覆盖整个屏幕 === */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* === 整体布局 === */
+body {
+  
+  
+  /* 渐变背景 */
+  background:linear-gradient(220.55deg, #565656 0%, #181818 100%);
+  background-image: url('yourDarkImageURL');  
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* 外部容器 */
+.container {
+  width: 980px;
+  padding: 100px;
+  background: linear-gradient(220.55deg, #333 0%, #1a237e 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* === 顶部信息盒子 === */
+.head_box {
+  border-radius: 10px;
+  padding: 12px 25px;
+  background: rgba(40, 40, 40, 0.6); /* 半透明深色 */
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  position: relative;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* === 基础信息 === */
+.base_info {
+  position: relative;
+  padding-left: 12px;
+}
+
+/* === 数据展示框 === */
+.data_box {
+  border-radius: 10px;
+  margin-top: 25px;
+  background: rgba(40, 40, 40, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+}
+
+/* 标签样式 */
+.tab_lable {
+  position: absolute;
+  top: -18px;
+  left: -10px;
+  background: rgba(60, 60, 60, 0.6);
+  backdrop-filter: blur(10px);  
+  color: #ffffff;
+  font-size: 16px;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* 数据行 */
+.data_line {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.data_line_item {
+  width: 120px;
+  text-align: center;
+}
+
+.num {
+  font-family: tttgbnumber;
+  font-size: 26px;
+  font-weight: bold;
+  color: #ffab40; /* 橙黄色 */
+}
+
+.data_box .lable {
+  font-size: 16px;
+  color: #b0bec5;
+  margin-top: 5px;
+}
+
+/* === 选项列表 === */
+.list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.list .item {
+  width: 230px;
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+  border-radius: 10px;
+  margin: 0 10px 15px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(50, 50, 50, 0.6);
+}
+
+.list .item .icon {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  flex-shrink: 0;
+}
+
+.list .item .title {
+  font-size: 18px;
+  margin-left: 8px;
+  line-height: 22px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.list .item .title .dec {
+  font-size: 14px;
+  color: #b0bec5;
+  margin-top: 3px;
+}
+
+/* 底部 Logo */
+.logo {
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 20px;
+}
