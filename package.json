@@ -1,0 +1,31 @@
+{
+  "name": "jiandan-plugin",
+  "version": "1.0.0",
+  "author": "3448585471",
+  "type": "module",
+  "dependencies": {
+    "axios": "*",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "form-data": "^4.0.3",
+    "leancloud-storage": "^4.15.2",
+    "nodemailer": "^7.0.3",
+    "protobufjs": "^7.5.1",
+    "qrcode": "^1.5.4",
+    "sharp": "0.33.5"
+  },
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "3.3.3"
+  },
+  "imports": {
+    "#model": "./model/index.js"
+  },
+  "scripts": {
+    "pre": "pnpm exec prettier . --write"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
