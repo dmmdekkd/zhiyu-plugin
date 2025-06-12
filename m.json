@@ -1,0 +1,26 @@
+[
+  {
+    "id": 2,
+    "qq": "3448585471",
+    "qqName": "3448585471",
+    "message": "？",
+    "timestamp": "1749725323792",
+    "hidden": false,
+    "reviewed": true,
+    "status": "pending"
+  },
+  {
+    "id": 3,
+    "qq": "3448585471",
+    "qqName": "3448585471",
+    "message": "66",
+    "timestamp": "1749727256503",
+    "hidden": false,
+    "reviewed": true,
+    "status": "pending",
+    "reply": {
+      "content": "666",
+      "timestamp": 1749727302185
+    }
+  }
+]
