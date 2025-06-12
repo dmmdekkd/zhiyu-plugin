@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>帮助菜单</title>
+  
+  <!-- 默认加载浅色主题 -->
+  <link id="theme-style" rel="stylesheet" type="text/css" href="../../../plugins/jiandan-plugin/resources/html/help-light.css" />
+  
+  <!-- JavaScript 负责切换主题 -->
+  <script src="../../../plugins/jiandan-plugin/resources/html/theme-switcher.js" defer></script>
+
+  <!-- 嵌入字体 -->
+  <style>
+    /* 自定义字体 */
+    @font-face {
+      font-family: "tttgbnumber";
+      src: url("../../../plugins/jindan-plugin/resources/font/字体.ttf"); /* 调整路径 */
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* 全局应用字体 */
+    body {
+      font-family: "tttgbnumber", Arial, sans-serif;
+    }
+
+    /* 特定元素应用字体 */
+    .head_box, .tab_lable, .list .item .title {
+      font-family: "tttgbnumber", Arial, sans-serif;
+    }
+  </style>
+
+  <link rel="shortcut icon" href="#" />
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="head_box">
+      <!-- 左侧内容 -->
+      <div class="header-left">
+        <div class="id_text">菜单 / 帮助</div>
+        <h2 class="day_text">使用说明</h2>
+      </div>
+
+      <!-- 右侧内容 -->
+      <div class="header-right">
+        <div class="version-badge">
+        </div>
+      </div>
+    </div>
+
+    {{each helpData val}}
+    <div class="data_box">
+      <div class="tab_lable">{{val.group}}</div>
+      <div class="list">
+        {{each val.list item}}
+        <div class="item">
+          <img class="icon" src="{{genshinPath}}icon/{{item.icon}}.png" />
+          <div class="title">
+            <div class="text">{{item.title}}</div>
+            <div class="dec">{{item.desc}}</div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/each}}
+
+    <div class="logo">Created By {{botname}} {{MiaoV}} & 简单-插件 By @3448585471 {{version}}</div>
+  </div>
+</body>
+
+</html>

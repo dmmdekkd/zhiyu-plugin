@@ -1,0 +1,42 @@
+{
+  "name": "zhiyu-plugin",
+  "version": "0.0.2",
+  "description": "一款简单易用的 Yunzai-Bot 功能插件",
+  "main": "index.js",
+  "scripts": {
+    "update-version": "node scripts/update_version.js"
+  },
+  "keywords": [
+    "yunzai",
+    "bot",
+    "plugin"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "axios": "*",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "form-data": "^4.0.3",
+    "leancloud-storage": "^4.15.2",
+    "nodemailer": "^7.0.3",
+    "protobufjs": "^7.5.1",
+    "qrcode": "^1.5.4",
+    "sharp": "0.33.5"
+  },
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "3.3.3"
+  },
+  "imports": {
+    "#model": "./model/index.js"
+  },
+  "scripts": {
+    "pre": "pnpm exec prettier . --write"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}
