@@ -1,15 +1,16 @@
-# <h1 align="center">
+
   <img src="https://th.bing.com/th/id/R.653eb3d2506882514af81e33d9946655?rik=wyNDzjL%2f2Nkg9w&riu=http%3a%2f%2fimg.soogif.com%2fLfSPsJIbjgPL18Y58BV7RKexTv9OSNJG.gif&ehk=tmEpfh1haaSiRq40z09hWZ41gs7ZyFAZPTUU7a9DJnc%3d&risl=&pid=ImgRaw&r=0&PC=EMMX01" width="30"/>
   zhiyu-plugin 
   <img src="https://camo.githubusercontent.com/c0f099b86a0d1445b74c87a2307f5f1f14f0c86bc0a69191d8fafeebfd56d57d/68747470733a2f2f74682e62696e672e636f6d2f74682f69642f522e61366262323533303838313938376436323439663565386565663237633838363f72696b3d4577736664434e696a3773426a41267269753d68747470253361253266253266632d73736c2e64756974616e672e636f6d25326675706c6f6164732532666974656d253266323032303034253266303225326632303230303430323139333035385f62756877672e6769662665686b3d6c4f69477275785649626930673775446945467176732532664e49695457573148694479376366735570417867253364267269736c3d267069643d496d6752617726723d302650433d454d4d583031" width="30"/>
-</h1>
+
+
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/版本-0.0.2-blue.svg" alt="版本"/>
   <img src="https://img.shields.io/badge/作者--orange.svg" alt="作者"/>
   <img src="https://img.shields.io/badge/许可证-MIT-green.svg" alt="许可证"/>
   <img src="https://img.shields.io/badge/Node.js-16+-green.svg" alt="Node.js"/>
-  <img src="https://img.shields.io/badge/Yunzai-Bot-3.0+-blue.svg" alt="Yunzai-Bot"/>
   <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/更新日志-查看-orange.svg" alt="更新日志"/></a>
 </p>
 
