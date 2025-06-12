@@ -1,0 +1,72 @@
+{
+  "name": "🔥",
+  "gold": 45229,
+  "diamond": 0,
+  "booths": {
+    "咖啡馆": {
+      "unlocked": true,
+      "assistant": {
+        "name": "银狼",
+        "level": 1,
+        "star": 1
+      },
+      "last_collect": 1748335105490
+    },
+    "便利店": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1748335060261
+    },
+    "服装店": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1748335060261
+    },
+    "电玩城": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1748335060261
+    },
+    "KTV": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1748335060261
+    },
+    "电影院": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1748335060261
+    },
+    "书店": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1748335060261
+    },
+    "培训班": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1748335060261
+    },
+    "科技馆": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1748335060261
+    }
+  },
+  "assistants": [
+    {
+      "name": "银狼",
+      "level": 1,
+      "star": 1
+    }
+  ],
+  "fragments": {},
+  "city_level": 1,
+  "total_income": 45229,
+  "tutorial_step": 4,
+  "tickets": {
+    "普通": 0,
+    "黄金": 0,
+    "炫彩": 0
+  }
+}

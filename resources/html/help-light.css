@@ -1,0 +1,163 @@
+/* 隐藏滚动条 */
+body {
+  overflow: hidden;
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* === 确保页面背景覆盖整个屏幕 === */
+html, body {
+  height: 100%; /* 使整个页面高度充满屏幕 */
+  margin: 0;    /* 去掉默认的外边距 */
+}
+
+/* === 整体布局 === */
+body {
+  font-family: "tttgbnumber", sans-serif;
+  font-size: 18px;
+  color: #1e1f20;
+  background: #f0f8ff; /* 默认浅蓝色背景 */
+  transform: scale(1.5);
+  transform-origin: 0 0;
+  padding: 30px;
+  /* 自定义背景设置（可选） */
+  background: linear-gradient(135deg, #fdd835, #f57c00);  /* 渐变背景 */
+  background-image: url('yourImageURL');  /* 背景图片，替换为实际路径 */
+  background-size: cover;  /* 让背景图片覆盖整个屏幕 */
+  background-position: center center; /* 背景图片居中 */
+  background-repeat: no-repeat; /* 背景图片不重复 */
+}
+
+/* 外部容器 */
+.container {
+  width: 980px;
+  padding: 100px;
+  background:linear-gradient(220.55deg, #FF9D7E 0%, #4D6AD0 100%);
+  background-size: cover; /* 背景图适应容器 */
+  background-position: center; /* 背景图居中 */
+  background-repeat: no-repeat;
+}
+
+/* === 顶部信息盒子 === */
+.head_box {
+  border-radius: 10px;
+  padding: 12px 25px;
+  background: rgba(255, 255, 255, 0.4); /* 半透明背景 */
+  color: #000000;
+  backdrop-filter: blur(10px); /* 模糊背景 */
+  position: relative;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* === 基础信息 === */
+.base_info {
+  position: relative;
+  padding-left: 12px;
+}
+
+/* === 数据展示框 === */
+.data_box {
+  border-radius: 10px;
+  margin-top: 25px;
+  background: rgba(255, 255, 255, 0.4); /* 半透明背景 */
+  backdrop-filter: blur(10px); /* 模糊背景 */
+}
+
+/* 标签样式 */
+.tab_lable {
+  position: absolute;
+  top: -18px;
+  left: -10px;
+  background: rgba(255, 255, 255, 0.4); /* 半透明背景 */
+backdrop-filter: blur(10px); /* 模糊背景 */  
+  color: #000000;
+  font-size: 16px;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* 数据行 */
+.data_line {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.data_line_item {
+  width: 120px;
+  text-align: center;
+}
+
+.num {
+  font-family: tttgbnumber;
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff7043;
+}
+
+.data_box .lable {
+  font-size: 16px;
+  color: #7f858a;
+  margin-top: 5px;
+}
+
+/* === 选项列表 === */
+.list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.list .item {
+  width: 230px;
+  display: flex;
+  align-items: center;
+  
+  padding: 12px 10px;
+  border-radius: 10px;
+  margin: 0 10px 15px 10px;
+  
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+
+.list .item .icon {
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  flex-shrink: 0;
+}
+
+.list .item .title {
+  font-size: 18px;
+  margin-left: 8px;
+  line-height: 22px;
+  font-weight: bold;
+}
+
+.list .item .title .dec {
+  font-size: 14px;
+  color: #666;
+  margin-top: 3px;
+}
+
+/* 底部 Logo */
+.logo {
+  font-size: 16px;
+  text-align: center;
+  color: #000000;
+  margin-top: 20px;
+}
