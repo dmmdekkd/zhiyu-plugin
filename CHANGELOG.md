@@ -1,50 +1,6 @@
-# 1.1.3
-
-- 新增 `apps/123456`
-- 新增 `apps/ai.js`
-- 新增 `apps/bind.js`
-- 新增 `apps/今日cp.js`
-- 新增 `apps/今日运势.js`
-- 新增 `apps/图床.js`
-- 新增 `apps/地下城.js`
-- 新增 `apps/天选之人.js`
-- 新增 `apps/定时.js.bak`
-- 新增 `apps/帮助菜单.js`
-- 新增 `apps/插件列表.js`
-- 新增 `apps/星铁.js`
-- 新增 `apps/更新.js`
-- 新增 `apps/查询robot.js`
-- 新增 `apps/查询我的信息.js`
-- 新增 `apps/查询群号.js`
-- 新增 `apps/绑定.js`
-- 新增 `apps/联系主人.js`
-- 新增 `apps/贴一贴.js`
-
-<<<<<<< HEAD
 # 1.1.2
 
-- 新增 `apps/123456`
-- 新增 `apps/ai.js`
-- 新增 `apps/bind.js`
-- 新增 `apps/今日cp.js`
-- 新增 `apps/今日运势.js`
-- 新增 `apps/图床.js`
-- 新增 `apps/地下城.js`
-- 新增 `apps/天选之人.js`
-- 新增 `apps/定时.js.bak`
-- 新增 `apps/帮助菜单.js`
-- 新增 `apps/插件列表.js`
-- 新增 `apps/星铁.js`
-- 新增 `apps/更新.js`
-- 新增 `apps/查询robot.js`
-- 新增 `apps/查询我的信息.js`
-- 新增 `apps/查询群号.js`
-- 新增 `apps/绑定.js`
-- 新增 `apps/联系主人.js`
-- 新增 `apps/贴一贴.js`
 
-=======
->>>>>>> b6a00195309586bf095217377545c01fec890ab9
 
 # 1.1.1
 
