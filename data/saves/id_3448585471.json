@@ -1,0 +1,72 @@
+{
+  "name": "3448585471",
+  "gold": 83583069.25084676,
+  "diamond": 0,
+  "booths": {
+    "咖啡馆": {
+      "unlocked": true,
+      "assistant": {
+        "name": "瓦尔特",
+        "level": 1,
+        "star": 1
+      },
+      "last_collect": 1749724341786
+    },
+    "便利店": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1749640740297
+    },
+    "服装店": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1749640740297
+    },
+    "电玩城": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1749640740297
+    },
+    "KTV": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1749640740297
+    },
+    "电影院": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1749640740297
+    },
+    "书店": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1749640740297
+    },
+    "培训班": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1749640740297
+    },
+    "科技馆": {
+      "unlocked": false,
+      "assistant": null,
+      "last_collect": 1749640740297
+    }
+  },
+  "assistants": [
+    {
+      "name": "瓦尔特",
+      "level": 11,
+      "star": 1
+    }
+  ],
+  "fragments": {},
+  "city_level": 1,
+  "total_income": 83601489,
+  "tutorial_step": 4,
+  "tickets": {
+    "普通": 0,
+    "黄金": 0,
+    "炫彩": 0
+  }
+}
