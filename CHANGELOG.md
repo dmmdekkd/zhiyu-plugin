@@ -1,3 +1,143 @@
+# 0.0.11
+
+- 新增`baseInfo`
+
+- 新增`1`
+
+- 新增`uin`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot创建者
+
+  </details>
+
+- 新增`url`
+  <details>
+  <summary>功能列表</summary>
+
+  - boturl
+
+  </details>
+
+- 新增`事件`
+
+- 新增`信息`
+
+- 新增`列表`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot列表
+
+  </details>
+
+- 新增`删除模板`
+
+- 新增`功能统计`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot获取功能统计
+
+  </details>
+
+- 新增`场景`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot场景查询
+
+  </details>
+
+- 新增`快捷菜单`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot快捷菜单
+
+  </details>
+
+- 新增`指令`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot指令
+  - bot指令详情
+
+  </details>
+
+- 新增`数据`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot数据
+
+  </details>
+
+- 新增`服务`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot服务
+  - bot服务详情
+
+  </details>
+
+- 新增`模板`
+
+- 新增`模板详情`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot模板详情
+
+  </details>
+
+- 新增`沙箱`
+
+- 新增`白名单`
+  <details>
+  <summary>功能列表</summary>
+
+  - botip
+
+  </details>
+
+- 新增`管理登录`
+  <details>
+  <summary>功能列表</summary>
+
+  - 管理登录
+
+  </details>
+
+- 新增`群`
+  <details>
+  <summary>功能列表</summary>
+
+  - 特性限制
+
+  </details>
+
+- 新增`通知`
+  <details>
+  <summary>功能列表</summary>
+
+  - bot通知
+
+  </details>
+
+- 修改`图床`
+  <details>
+  <summary>功能列表</summary>
+
+  - c
+  - 上传
+
+  </details>
+
+
 # 0.0.10
 
 - 细节优化
