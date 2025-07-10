@@ -48,15 +48,23 @@ export default class YamlReader {
     return _.get(this.jsonData, keyPath);
   }
 
-  /* 修改某个key的值 */
-  set(keyPath, value) {
-    this.document.setIn([keyPath], value);
+  /**
+   * 新增或修改插件配置
+   * @param {string} pluginName 插件名
+   * @param {object} config 配置对象
+   */
+  addOrUpdatePlugin(pluginName, config) {
+    // 插件配置以插件名为key存储
+    this.document.setIn([pluginName], config);
     this.save();
   }
 
-  /* 删除key */
-  delete(keyPath) {
-    this.document.deleteIn(keyPath.split("."));
+  /**
+   * 卸载插件（删除插件配置）
+   * @param {string} pluginName 插件名
+   */
+  removePlugin(pluginName) {
+    this.document.deleteIn([pluginName]);
     this.save();
   }
 
@@ -79,5 +87,76 @@ export default class YamlReader {
     this.isSave = true;
     let yaml = this.document.toString();
     fs.writeFileSync(this.yamlPath, yaml, "utf8");
+  }
+
+  /**
+   * 判断是否启用功能
+   */
+  checkDisable(p) {
+    const groupCfg = cfg.getGroup(p.e.self_id, p.e.group_id);
+    if (groupCfg.disable?.length && groupCfg.disable.includes(p.name))
+      return false;
+    if (groupCfg.enable?.length && !groupCfg.enable.includes(p.name))
+      return false;
+    return true;
+  }
+
+  async changePlugin(key) {
+    try {
+      let app = await import(`../../${this.dir}/${key}?${moment().format("x")}`);
+      if (app.apps) app = { ...app.apps };
+      lodash.forEach(app, (p) => {
+        if (!p?.prototype) return;
+        const plugin = new p();
+        if (plugin.rule)
+          for (const i of plugin.rule)
+            if (!(i.reg instanceof RegExp)) i.reg = new RegExp(i.reg);
+        for (const i of this.priority)
+          if (i.key === key && i.name === plugin.name)
+            Object.assign(i, {
+              plugin,
+              class: p,
+              priority: plugin.priority,
+            });
+        // 新增/修改插件配置
+        this.yamlReader.addOrUpdatePlugin(plugin.name, plugin.config || {});
+      });
+      this.priority = lodash.orderBy(this.priority, ["priority"], ["asc"]);
+    } catch (err) {
+      Bot.makeLog("error", [`插件加载错误 ${logger.red(key)}`, err], "Plugin");
+    }
+  }
+
+  /** 监听热更新 */
+  watch(dirName, appName) {
+    this.watchDir(dirName);
+    if (this.watcher[`${dirName}.${appName}`]) return;
+
+    const file = `./${this.dir}/${dirName}/${appName}`;
+    const watcher = chokidar.watch(file);
+    const key = `${dirName}/${appName}`;
+
+    /** 监听修改 */
+    watcher.on(
+      "change",
+      lodash.debounce(() => {
+        Bot.makeLog("mark", `[修改插件][${dirName}][${appName}]`, "Plugin");
+        this.changePlugin(key);
+      }, 5000)
+    );
+
+    /** 监听删除 */
+    watcher.on(
+      "unlink",
+      lodash.debounce(async () => {
+        Bot.makeLog("mark", `[卸载插件][${dirName}][${appName}]`, "Plugin");
+        /** 停止更新监听 */
+        this.watcher[`${dirName}.${appName}`].removeAllListeners("change");
+        this.priority = this.priority.filter((i) => i.key !== key);
+        // 卸载插件配置
+        this.yamlReader.removePlugin(appName.replace(/\.js$/, ""));
+      }, 5000)
+    );
+    this.watcher[`${dirName}.${appName}`] = watcher;
   }
 }

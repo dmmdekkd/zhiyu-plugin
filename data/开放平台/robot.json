@@ -1,0 +1,20 @@
+{
+  "stdin": {
+    "type": "ok",
+    "uid": "",
+    "ticket": "ed1c41aface8d7cbd55ce5288ae2bf73",
+    "uin": "3448585471",
+    "developerId": "9a2b3a0a991770d3e1dc30419b2a2788",
+    "appType": "2",
+    "appId": "102080069"
+  },
+  "3889005815:766D75905E257FE65E207E8B8C3ABE60": {
+    "type": "ok",
+    "uid": "",
+    "ticket": "d62a25222bc12689cd8121d9726ab031",
+    "uin": "3448585471",
+    "developerId": "9a2b3a0a991770d3e1dc30419b2a2788",
+    "appType": "2",
+    "appId": "102131063"
+  }
+}

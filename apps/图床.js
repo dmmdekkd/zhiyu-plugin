@@ -11,78 +11,118 @@ export class RemoteShellPic extends plugin {
       name: "远程文件上传",
       dsc: "上传指定路径或URL的图片并用Ark格式发送",
       event: "message",
-      priority: 5,  // 低优先级，避免拦截其他插件
+      priority: 5,
       rule: [
-        { reg: '^c\\s+(.+)', fnc: "uploadFile" },
-        { reg: '^[#|/]?上传.*$', fnc: "autoCatchQQImage" },
+        { reg: "^c\\s+(.+)", fnc: "uploadFile" },
+        { reg: "#上传.*", fnc: "autoCatchQQImage" },
       ],
     })
   }
 
   async uploadFile() {
-    let input = this.e.msg.replace(/^c\s+/, "").trim()
+    const input = this.e.msg.replace(/^c\s+/, "").trim()
     if (!input) return this.reply("请输入文件路径或URL")
-    return await this.handleUpload(input)
+
+    try {
+      const imgurl = await RemoteShellPic.uploadImage(input)
+      // 这里发送Ark消息
+      await this.sendUploadSuccessArk(imgurl)
+    } catch (e) {
+      await this.reply(`上传失败：${e.message}`)
+    }
   }
 
   async autoCatchQQImage() {
+    logger.mark(`开始处理`)
     try {
       if (Array.isArray(this.e.message)) {
-        const imageUrls = []
         for (let seg of this.e.message) {
           if (seg.type === "image" && seg.url) {
             const imgUrl = seg.url.replace(/&amp;/g, "&")
-            logger.mark(`[autoCatchQQImage] 捕获 URL（image段）: ${imgUrl}`)
-            imageUrls.push(imgUrl)
+            logger.mark(`捕获 URL（image段）: ${imgUrl}`)
+            const imgurl = await RemoteShellPic.uploadImage(imgUrl)
+            await this.sendUploadSuccessArk(imgurl)
+            return
           }
-        }
-        
-        if (imageUrls.length > 0) {
-          await this.handleMultipleUploads(imageUrls)
-          return
         }
       }
 
       const raw = this.e.raw_message || this.e.msg || ""
-      const urlMatches = raw.match(/url=([^\s>,]+)/gi)
-      if (urlMatches) {
-        const imageUrls = urlMatches.map(match => {
-          const url = match.match(/url=([^\s>,]+)/i)[1]
-          return decodeURIComponent(url.replace(/&amp;/g, "&"))
-        }).filter(url => url.startsWith("http"))
-        
-        if (imageUrls.length > 0) {
-          logger.mark(`[autoCatchQQImage] 捕获 URL（raw文本）: ${imageUrls.join(", ")}`)
-          await this.handleMultipleUploads(imageUrls)
+      const urlMatch = raw.match(/url=([^\s>,]+)/i)
+      if (urlMatch) {
+        const imgUrl = decodeURIComponent(urlMatch[1].replace(/&amp;/g, "&"))
+        if (imgUrl.startsWith("http")) {
+          logger.mark(`捕获 URL（raw文本）: ${imgUrl}`)
+          const imgurl = await RemoteShellPic.uploadImage(imgUrl)
+          await this.sendUploadSuccessArk(imgurl)
           return
         }
       }
 
+      logger.mark(`无有效图片 URL，跳过`)
       return false
     } catch (err) {
-      logger.error(`[autoCatchQQImage] 异常：${err.stack || err}`)
+      logger.error(`异常：${err.stack || err}`)
       return false
+    } finally {
+      logger.mark(`完成`)
     }
   }
 
-  async handleMultipleUploads(imageUrls) {
-    try {
-      const results = []
-      for (const url of imageUrls) {
-        const result = await this.handleUpload(url)
-        if (result) {
-          results.push(result)
+  async sendUploadSuccessArk(imgurl) {
+    const arkData = {
+      type: "ark",
+      template_id: 37,
+      kv: [
+        { key: "#PROMPT#", value: "上传成功" },
+        { key: "#METATITLE#", value: "图片上传成功" },
+        { key: "#METASUBTITLE#", value: "成功" },
+        { key: "#METACOVER#", value: imgurl },
+        { key: "#METAURL#", value: `` }
+      ]
+    }
+
+    const arkDat = {
+      type: "ark",
+      template_id: 23,
+      kv: [
+        {
+          key: "#DESC#",
+          value: "上传成功"
+        },
+        {
+          key: "#PROMPT#",
+          value: "上传成功"
+        },
+        {
+          key: "#LIST#",
+          obj: [
+            {
+              obj_kv: [
+                {
+                  key: "desc",
+                  value: "点击前往"
+                },
+                {
+                  key: "link",
+                  value: `https://x.sixflowers.icu/pa/?url=${encodeURIComponent(imgurl)}`
+                }
+              ]
+            }
+          ]
         }
-      }
-      return results
-    } catch (err) {
-      logger.error(`[handleMultipleUploads] 异常：${err.stack || err}`)
-      return false
+      ]
     }
+
+    logger.mark(`[SEND ARK] 发送 Ark 模板37`)
+    await this.reply(arkData)
+
+    logger.mark(`[SEND ARK] 发送 Ark 模板23`)
+    await this.reply(arkDat)
   }
 
-  async handleUpload(input) {
-    logger.mark(`[handleUpload] 接收参数：${input}`)
+  // 静态方法，供外部调用
+  static async uploadImage(input) {
     let tmpFile = ""
     let isRemote = false
 
@@ -93,7 +133,7 @@ export class RemoteShellPic extends plugin {
         let ext = path.extname(urlPath) || ".jpg"
         tmpFile = path.join(os.tmpdir(), `upload_tmp${ext}`)
 
-        logger.mark(`[handleUpload] 下载远程文件: ${input} -> ${tmpFile}`)
+        logger.mark(`下载远程文件: ${input} -> ${tmpFile}`)
 
         let res = await axios.get(input, { responseType: "stream" })
         const writer = fs.createWriteStream(tmpFile)
@@ -106,13 +146,13 @@ export class RemoteShellPic extends plugin {
       } else {
         tmpFile = path.resolve(input)
         await fsPromises.access(tmpFile)
-        logger.mark(`[handleUpload] 使用本地文件: ${tmpFile}`)
+        logger.mark(`使用本地文件: ${tmpFile}`)
       }
 
       const form = new FormData()
       form.append("image", fs.createReadStream(tmpFile))
 
-      logger.mark(`[handleUpload] 上传图片到图床...`)
+      logger.mark(`上传图片到图床...`)
 
       const uploadRes = await axios.post("https://9480.sixflowers.icu/api/img.php", form, {
         headers: form.getHeaders(),
@@ -128,69 +168,20 @@ export class RemoteShellPic extends plugin {
       }
 
       if (!imgurl) {
-        logger.error(`[handleUpload] 上传成功但无返回图片 URL`)
-        return this.reply("上传成功，但未获取到图片地址")
+        throw new Error("上传成功但未获取到图片地址")
       }
 
-      logger.mark(`[handleUpload] 上传成功 URL：${imgurl}`)
-
-      const arkData = {
-        type: "ark",
-        template_id: 37,
-        kv: [
-          { key: "#PROMPT#", value: "上传成功" },
-          { key: "#METATITLE#", value: "图片上传成功" },
-          { key: "#METASUBTITLE#", value: "成功" },
-          { key: "#METACOVER#", value: imgurl },
-          { key: "#METAURL#", value: `` }
-        ]
-      }
-
-      const arkDat = {
-        type: "ark",
-        template_id: 23,
-        kv: [
-          {
-            key: "#DESC#",
-            value: "上传成功"
-          },
-          {
-            key: "#PROMPT#",
-            value: "上传成功"
-          },
-          {
-            key: "#LIST#",
-            obj: [
-              {
-                obj_kv: [
-                  {
-                    key: "desc",
-                    value: "点击前往"
-                  },
-                  {
-                    key: "link",
-                    value: `https://x.sixflowers.icu/pa/?url=${encodeURIComponent(imgurl)}`
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-
-      logger.mark(`[SEND ARK] 发送 Ark 模板37`)
-      await this.reply(arkData)
-
-      logger.mark(`[SEND ARK] 发送 Ark 模板23`)
-      await this.reply(arkDat)
+      logger.mark(`上传成功 URL：${imgurl}`)
 
       if (isRemote && tmpFile) {
         await fsPromises.unlink(tmpFile).catch(() => {})
-        logger.mark(`[handleUpload] 清理临时文件：${tmpFile}`)
+        logger.mark(`清理临时文件：${tmpFile}`)
       }
+
+      return imgurl
     } catch (err) {
-      logger.error(`[handleUpload] 异常：${err.stack || err}`)
-      await this.reply(`操作失败：${err.message}`)
+      logger.error(`异常：${err.stack || err}`)
+      throw err
     }
   }
 }

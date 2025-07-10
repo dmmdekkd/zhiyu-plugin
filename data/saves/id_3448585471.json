@@ -1,6 +1,6 @@
 {
   "name": "3448585471",
-  "gold": 83613069.25084676,
+  "gold": 2341722173.250847,
   "diamond": 0,
   "booths": {
     "咖啡馆": {
@@ -10,7 +10,7 @@
         "level": 1,
         "star": 1
       },
-      "last_collect": 1749724341786
+      "last_collect": 1751982450890
     },
     "便利店": {
       "unlocked": false,
@@ -62,7 +62,7 @@
   ],
   "fragments": {},
   "city_level": 1,
-  "total_income": 83601489,
+  "total_income": 2341710593,
   "tutorial_step": 4,
   "tickets": {
     "普通": 0,
